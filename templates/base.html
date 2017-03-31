@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/spectre.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/spectre-exp.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/spectre-icons.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+
+    {% block head_js %}
+
+    {% endblock %}
+
+
+    <script src="{{ url_for('static', filename='js/theta_viewer/three.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theta_viewer/async.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theta_viewer/OrbitControls.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theta_viewer/theta-viewer.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='js/fetch.js') }}"></script>
+    <!-- tiny json api helper -->
+    <script src="{{ url_for('static', filename='js/index.min.js') }}"></script>
+    <!-- include riot.js and the compiler -->
+    <script src="https://cdn.jsdelivr.net/riot/3.2/riot+compiler.min.js"></script>
+
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer" class='text-center'>
+        {% block footer %}
+            <!-- &copy; Copyright 2017 by <a href="http://itsjesseyo.com/">itsjesseyo.com</a> -->
+        {% endblock %}
+    </div>
+
+
+    <!-- mount normally -->
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/index.tag') }}"></script>
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/gallery.tag') }}"></script>
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/pano_viewer.tag') }}"></script>
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/upload_panos.tag') }}"></script>
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/upload_images.tag') }}"></script>
+    <script type="riot/tag" src="{{ url_for('static', filename='tags/new_rooms.tag') }}"></script>
+
+    
+
+
+    <script type="text/javascript">
+        var get_json = function(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+              var status = xhr.status;
+              if (status == 200) {
+                callback(null, xhr.response);
+              } else {
+                callback(status);
+              }
+            };
+            xhr.send();
+        };
+
+        function compare_order(a,b) {
+          if (a.order < b.order)
+            return 1;
+          if (a.order > b.order)
+            return -1;
+          return 0;
+        }
+
+        function compare_id(a,b) {
+          if (a.id < b.id)
+            return 1;
+          if (a.id > b.id)
+            return -1;
+          return 0;
+        }
+
+        var image_root = window.location.origin + "{{ url_for('uploaded_file', filename='') }}"
+
+    </script>
+
+
+    {% block footer_js %}
+
+    {% endblock %}
+
+</body>
+</html>

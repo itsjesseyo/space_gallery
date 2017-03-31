@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+		{{ super() }}
+		<style type="text/css">
+				.important { color: #336699; }
+				li.tab-item a:hover{
+					cursor:pointer;
+				}
+		</style>
+{% endblock %}
+{% block content %}
+
+
+
+<div class='container'>
+		<index />
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block footer_js %}
+	<script>
+		riot.mount('*')
+	</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Edit Stats{% endblock %}
+{% block head %}
+		{{ super() }}
+		<style type="text/css">
+				.important { color: #336699; }
+		</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="columns">
+
+		<div class="column col-12">
+			<div class="empty">
+				<div class="empty-icon">
+					<i class="icon icon-people"></i>
+				</div>
+				<h4 class="empty-title">Adoption Stats</h4>
+				<p class="empty-subtitle">Any change is saved automatically and will trigger the slide to show at next update</p>
+			</div>
+
+			<!--our stats tag-->
+			<stats />
+		</div>
+
+	</div>
+</div>
+{% endblock %}
+
+{% block footer_js %}
+	<script>
+		riot.mount('stats')
+	</script>
+{% endblock %}

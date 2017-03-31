@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Edit Stats{% endblock %}
+{% block head %}
+		{{ super() }}
+		<style type="text/css">
+				.important { color: #336699; }
+		</style>
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+	var image_root = window.location.origin + "{{ url_for('uploaded_file', filename='') }}"
+
+</script>
+<div class="container">
+	<div class="columns">
+
+		<div class="column col-12">
+			<div class="empty">
+				<div class="empty-icon">
+					<i class="icon icon-people"></i>
+				</div>
+				<h4 class="empty-title">Image Slides</h4>
+				<p class="empty-subtitle">Images at the top show last.</p>
+			</div>
+
+			<!--our stats tag-->
+			<stats />
+		</div>
+
+	</div>
+</div>
+
+
+<div class='container'>
+	<div class='columns'>
+
+		<div class='column col-12'>
+			<slides/>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}
+
+{% block footer_js %}
+	<script>
+		riot.mount('slides')
+	</script>
+{% endblock %}
