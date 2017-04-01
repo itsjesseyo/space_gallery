@@ -56,7 +56,8 @@ class Image(db.Model):
 	def serialize(self):
 		return{
 			'id':self.id,
-			'filename':self.filename
+			'filename':self.filename,
+			'url':url_for('uploaded_file', filename=self.filename)
 		}
 
 
@@ -75,7 +76,8 @@ class Pano(db.Model):
 	def serialize(self):
 		return{
 			'id':self.id,
-			'filename':self.filename
+			'filename':self.filename,
+			'url':url_for('uploaded_file', filename=self.filename)
 		}
 
 @app.route("/")
