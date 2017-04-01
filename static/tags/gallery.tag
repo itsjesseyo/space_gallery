@@ -44,6 +44,10 @@
 							<td>sq feet</td>
 							<td>{feet}</td>
 						</tr>
+						<tr >
+							<td>$/sq foot</td>
+							<td>{price/feet}</td>
+						</tr>
 
 					</tbody>
 				</table>
